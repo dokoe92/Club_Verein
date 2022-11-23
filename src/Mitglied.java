@@ -1,5 +1,4 @@
-
-
+import java.util.Random;
 
 public class Mitglied {
     private String vorname;
@@ -7,11 +6,19 @@ public class Mitglied {
     private Character geschlecht;
     private String mitgliedskennung;
 
+
     public Mitglied(String vorname, String nachname, Character geschlecht, String mitgliedskennung) {
         this.vorname = vorname;
         this.nachname = nachname;
         checkGeschlechtInput(geschlecht);
         checkMitgliedserkennung(mitgliedskennung);
+    }
+
+    public Mitglied(String vorname, String nachname, Character geschlecht) {
+        this.vorname = vorname;
+        this.nachname = nachname;
+        checkGeschlechtInput(geschlecht);
+        zufallsKennzahl();
     }
 
     public void checkMitgliedserkennung(String kennung) {
@@ -69,6 +76,16 @@ public class Mitglied {
         System.out.println("Nachname: " + this.nachname);
         System.out.println("Geschlecht: " + this.geschlecht);
         System.out.println("Mitgliedskennung " + this.mitgliedskennung);
+    }
+
+    public void zufallsKennzahl() {
+         this.mitgliedskennung = "MG-" + getRandomNumber(1000, 10000);
+    }
+
+    public int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(max-min) + min;
+        return randomNumber;
     }
 
 

@@ -30,12 +30,16 @@ public class Main {
         //verein.countMitglieder();*/
 
 
-        System.out.println(verein.searchNachname("Kö"));
+        /*System.out.println(verein.searchNachname("Kö"));
         verein.deleteInvalidMitglieder();
-        verein.printAll();
+        verein.printAll();*/
 
-        verein.deleteAllMitglieder();
-        verein.printAll();
+        /*verein.printAll();
+        verein.removeMitgliedBeginningWithSearchstring("Kö");
+        verein.printAll();*/
+
+        Mitglied mitglied6 = new Mitglied("Karl", "Auto", 'd');
+        mitglied6.printAll();
 
 
     }

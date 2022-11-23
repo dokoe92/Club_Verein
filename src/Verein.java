@@ -3,12 +3,15 @@ import java.util.Iterator;
 
 
 public class Verein {
-    String vereinsname;
-    ArrayList<Mitglied> mitglieder;
+    private String vereinsname;
+    private ArrayList<Mitglied> mitglieder;
+    private final int stellplaetze = 3;
+
 
     public Verein(String vereinsname) {
         this.vereinsname = vereinsname;
         this.mitglieder = new ArrayList<>();
+
     }
 
     public void addMitglied(Mitglied newMitglied) {
@@ -55,11 +58,11 @@ public class Verein {
         System.out.println("-----");
     }
 
-    public ArrayList<String> searchNachname(String searchString) {
-        ArrayList<String> mitgliederMitNachname = new ArrayList<>();
+    public ArrayList<Mitglied> searchNachname(String searchString) {
+        ArrayList<Mitglied> mitgliederMitNachname = new ArrayList<>();
         for (Mitglied mitglied : mitglieder) {
             if (mitglied.getNachname().toLowerCase().contains(searchString.toLowerCase())) {
-                mitgliederMitNachname.add(mitglied.getNachname());
+                mitgliederMitNachname.add(mitglied);
             }
         }
         return mitgliederMitNachname;
@@ -76,8 +79,10 @@ public class Verein {
     }
 
     public void removeMitgliedBeginningWithSearchstring(String serachString) {
-        mitglieder.remove(searchNachname(serachString));
+        mitglieder.removeAll(searchNachname(serachString));
     }
+
+
 
 
 
