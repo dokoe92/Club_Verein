@@ -58,10 +58,10 @@ public class Verein {
         System.out.println("-----");
     }
 
-    public ArrayList<Mitglied> searchNachname(String searchString) {
+    public ArrayList<Mitglied> searchNachnameStartsWith(String searchString) {
         ArrayList<Mitglied> mitgliederMitNachname = new ArrayList<>();
         for (Mitglied mitglied : mitglieder) {
-            if (mitglied.getNachname().toLowerCase().contains(searchString.toLowerCase())) {
+            if (mitglied.getNachname().toLowerCase().startsWith(searchString.toLowerCase())) {
                 mitgliederMitNachname.add(mitglied);
             }
         }
@@ -78,8 +78,8 @@ public class Verein {
         }
     }
 
-    public void removeMitgliedBeginningWithSearchstring(String serachString) {
-        mitglieder.removeAll(searchNachname(serachString));
+    public void removeMitgliedBeginningWithSearchstring(String searchString) {
+        mitglieder.removeAll(searchNachnameStartsWith(searchString));
     }
 
 
