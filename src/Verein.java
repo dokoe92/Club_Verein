@@ -89,7 +89,7 @@ public class Verein {
         mitglieder.removeAll(searchNachnameStartsWith(searchString));
     }
 
-    public void vote() {
+    public void verlosen() {
         int anzahlMitgliederMitFarzeug = 0;
         ArrayList<Mitglied> mitgliederMitFahrzeug = new ArrayList<>();
         ArrayList<Mitglied> habenGewonnen = new ArrayList<>();

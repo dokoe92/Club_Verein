@@ -40,7 +40,7 @@ public class Main {
 
 
 
-        verein.vote();
+        verein.verlosen();
 
 
     }
