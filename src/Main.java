@@ -5,13 +5,13 @@
 public class Main {
     public static void main(String[] args) {
 
-        Mitglied mitglied1 = new Mitglied("Dominik", "Köberl", 'm', "1234567");
-        Mitglied mitglied2 = new Mitglied("Hans", "Wurst", 'd', "123");
-        Mitglied mitglied3 = new Mitglied("Julia", "Kötl", 'w', "12b34");
-        Mitglied mitglied4 = new Mitglied("Peter", "Wuhan", 'm', "abcdfeg");
-        Mitglied mitglied5 = new Mitglied("Hannah", "Ted", 'x',"abddflkjdfljdfld");
+        Mitglied mitglied1 = new Mitglied("Dominik", "Köberl", 'm', true);
+        Mitglied mitglied2 = new Mitglied("Hans", "Wurst", 'd', false);
+        Mitglied mitglied3 = new Mitglied("Julia", "Kötl", 'w', true );
+        Mitglied mitglied4 = new Mitglied("Peter", "Wuhan", 'm', true);
+        Mitglied mitglied5 = new Mitglied("Hannah", "Ted", 'x', true);
 
-        Verein verein = new Verein("Superduper");
+        Verein verein = new Verein("Superduper", 3);
 
         verein.addMitglied(mitglied1);
         verein.addMitglied(mitglied2);
@@ -38,8 +38,9 @@ public class Main {
         verein.removeMitgliedBeginningWithSearchstring("Kö");
         verein.printAll();*/
 
-        Mitglied mitglied6 = new Mitglied("Karl", "Auto", 'd');
-        mitglied6.printAll();
+
+
+        verein.vote();
 
 
     }

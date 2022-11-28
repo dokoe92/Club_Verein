@@ -1,16 +1,19 @@
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 
 public class Verein {
     private String vereinsname;
     private ArrayList<Mitglied> mitglieder;
-    private final int stellplaetze = 3;
+    private final int stellplaetze;
 
 
-    public Verein(String vereinsname) {
+    public Verein(String vereinsname, int stellplaetze) {
         this.vereinsname = vereinsname;
         this.mitglieder = new ArrayList<>();
+        this.stellplaetze = stellplaetze;
 
     }
 
@@ -18,6 +21,10 @@ public class Verein {
         if (newMitglied != null) {
             mitglieder.add(newMitglied);
         }
+    }
+
+    public void addMitglied(String vorname, String nachname, char sex, boolean carowner) {
+        mitglieder.add(new Mitglied(vorname, nachname, sex, carowner));
     }
 
     public int countMitglieder() {
@@ -82,8 +89,51 @@ public class Verein {
         mitglieder.removeAll(searchNachnameStartsWith(searchString));
     }
 
+    public void vote() {
+        int anzahlMitgliederMitFarzeug = 0;
+        ArrayList<Mitglied> mitgliederMitFahrzeug = new ArrayList<>();
+        ArrayList<Mitglied> habenGewonnen = new ArrayList<>();
 
 
+        // Get Mitglieder with isFahrzeug true and add to mitglierderMitFahrzeugen + increase counter of anzahlMitgliederMitFahrzeug
+        for (Mitglied mitglied : mitglieder) {
+            if (mitglied.isFahrzeugBesitzer()){
+                mitgliederMitFahrzeug.add(mitglied);
+                anzahlMitgliederMitFarzeug++;
+            }
+        }
 
+        // Print out all mitglieder with fahrzeug
+        System.out.println("Mitglieder mit Fahrzeugen: ");
+        for(Mitglied mitAuto : mitgliederMitFahrzeug) {
+            mitAuto.printAll();
+        }
+        System.out.println("\n");
+
+        // get a random number and put the index of mitgliedermitFahrzeug to the winner array
+        // only add if the winner (address of the object) is not already in the winner array
+        int bereitsVergeben = 0;
+        int counter = 0;
+        while (bereitsVergeben < stellplaetze && counter < mitgliederMitFahrzeug.size()) {
+            Random random = new Random();
+            int lotterie = random.nextInt(mitgliederMitFahrzeug.size());
+            Mitglied gewinner = mitgliederMitFahrzeug.get(lotterie);
+            if(!habenGewonnen.contains(gewinner)){
+                habenGewonnen.add(gewinner);
+                counter++;
+                bereitsVergeben++;
+            }
+        }
+
+        //
+        System.out.println("======= PARKPLATZVERLOSUNG =======");
+        System.out.println("Anzahl der verfügbaren Parkplätze: " + stellplaetze);
+        System.out.println("Mitglieder mit Fahrzeugen " + anzahlMitgliederMitFarzeug);
+        for (Mitglied gewinner : habenGewonnen) {
+            gewinner.printAll();
+        }
+        System.out.println("\n");
+
+    }
 
 }

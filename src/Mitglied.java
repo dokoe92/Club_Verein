@@ -5,20 +5,23 @@ public class Mitglied {
     private String nachname;
     private Character geschlecht;
     private String mitgliedskennung;
+    private boolean fahrzeugBesitzer;
 
 
-    public Mitglied(String vorname, String nachname, Character geschlecht, String mitgliedskennung) {
+    public Mitglied(String vorname, String nachname, Character geschlecht, String mitgliedskennung, boolean fahrzeugBesitzer) {
         this.vorname = vorname;
         this.nachname = nachname;
         checkGeschlechtInput(geschlecht);
         checkMitgliedserkennung(mitgliedskennung);
+        this.fahrzeugBesitzer = fahrzeugBesitzer;
     }
 
-    public Mitglied(String vorname, String nachname, Character geschlecht) {
+    public Mitglied(String vorname, String nachname, Character geschlecht, boolean fahrzeugBesitzer) {
         this.vorname = vorname;
         this.nachname = nachname;
         checkGeschlechtInput(geschlecht);
         zufallsKennzahl();
+        this.fahrzeugBesitzer = fahrzeugBesitzer;
     }
 
     public void checkMitgliedserkennung(String kennung) {
@@ -71,11 +74,12 @@ public class Mitglied {
         return this.mitgliedskennung;
     }
 
+    public boolean isFahrzeugBesitzer() {
+        return this.fahrzeugBesitzer;
+    }
+
     public void printAll() {
-        System.out.println("Vorname: " + this.vorname);
-        System.out.println("Nachname: " + this.nachname);
-        System.out.println("Geschlecht: " + this.geschlecht);
-        System.out.println("Mitgliedskennung " + this.mitgliedskennung);
+        System.out.println("Vorname: " + this.vorname + ", Nachname: " + this.nachname + ", Kennung: " + this.mitgliedskennung + ", Geschlecht: " + this.geschlecht);
     }
 
     public void zufallsKennzahl() {
@@ -87,6 +91,8 @@ public class Mitglied {
         int randomNumber = random.nextInt(max-min) + min;
         return randomNumber;
     }
+
+
 
 
 
