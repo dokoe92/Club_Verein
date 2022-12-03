@@ -46,10 +46,10 @@ public class Main {
         verein.addMitglied(mitglied6);
         verein.printAll();
 
-        mitglied6.changeAddress("Billing", new Adresse("Wien", "1000", "abc", "4"));
-        System.out.println(mitglied6.getBillingAddress().toString());
+        mitglied6.changeAddress("dd", new Adresse("Wien", "1000", "abc", "4"));
         mitglied6.changeAddress("Post", new Adresse("erf", "4444", "abc", "4"));
-        System.out.println(mitglied6.getPostAddress().toString());
+        mitglied6.printBillingAddress();
+        mitglied6.printPostAddress();
 
 
     }

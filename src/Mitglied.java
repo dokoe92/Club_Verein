@@ -117,6 +117,22 @@ public class Mitglied {
         return adressen.get("Post");
     }
 
+    public void printBillingAddress() {
+        try {
+            System.out.println(getBillingAddress().toString());
+        } catch(NullPointerException e) {
+            System.out.println("No billing address found");
+        }
+    }
+
+    public void printPostAddress() {
+        try {
+            System.out.println(getPostAddress().toString());
+        } catch(NullPointerException e) {
+            System.out.println("No post address found");
+        }
+    }
+
 
 
 
