@@ -19,6 +19,7 @@ public class Mitglied {
         checkGeschlechtInput(geschlecht);
         checkMitgliedserkennung(mitgliedskennung);
         this.fahrzeugBesitzer = fahrzeugBesitzer;
+        this.adressen = new HashMap<>();
     }
 
     public Mitglied(String vorname, String nachname, Character geschlecht, boolean fahrzeugBesitzer) {
@@ -27,6 +28,7 @@ public class Mitglied {
         checkGeschlechtInput(geschlecht);
         zufallsKennzahl();
         this.fahrzeugBesitzer = fahrzeugBesitzer;
+        this.adressen = new HashMap<>();
     }
 
     public void checkMitgliedserkennung(String kennung) {
@@ -98,7 +100,6 @@ public class Mitglied {
     }
 
     public void changeAddress(String type, Adresse address) {
-        this.adressen = new HashMap<>();
         if (type.equals("Billing")) {
             this.adressen.put(type, address);
         } else if (type.equals("Post")) {
