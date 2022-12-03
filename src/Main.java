@@ -42,6 +42,15 @@ public class Main {
 
         verein.verlosen();
 
+        Mitglied mitglied6 = new Mitglied("Hubert", "Goisner", 'm', true);
+        verein.addMitglied(mitglied6);
+        verein.printAll();
+
+        mitglied6.changeAddress("Billing", new Adresse("Wien", "1000", "abc", "4"));
+        System.out.println(mitglied6.getBillingAddress().toString());
+        mitglied6.changeAddress("Post", new Adresse("erf", "4444", "abc", "4"));
+        System.out.println(mitglied6.getPostAddress().toString());
+
 
     }
 }
